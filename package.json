@@ -1,0 +1,26 @@
+{
+  "name": "node-hw-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ./ --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --exec babel-node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^14.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.2"
+  }
+}
