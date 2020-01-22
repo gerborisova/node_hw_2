@@ -1,5 +1,5 @@
 
-import Joi from 'Joi';
+import Joi from 'joi';
 import express from 'express';
 
 const app = express();
@@ -24,12 +24,13 @@ app.get('/users/:id', (req, res) => {
 // Deletes the user with this id if found and isn't already deleted
 app.delete('/users/:id', (req, res) => {
     const user = users.find(u => u.id === parseInt(req.params.id));
+     if (!user) {
+        res.status(404).send('The user with the given ID was not found');
+    }
     if (user.isDeleted === true) {
         res.status(400).send('This user was already deleted');
     }
-    if (!user) {
-        res.status(404).send('The course with the given ID was not found');
-    }
+   
     user.isDeleted = true;
     res.send(user);
 });
@@ -67,6 +68,31 @@ app.get('/suggest', (req, res) => {
     res.send(sliced);
 });
 
+// Edit existing user 
+
+app.put('/users/:id', (req,res)=>{
+    const user = users.find(u => u.id === parseInt(req.params.id));
+     if (!user) {
+        res.status(404).send('The user with the given ID was not found');
+    }else{ 
+        if(req.body){
+            const { error } = validateUser(req.body);
+            if (error) {
+                res.status(400).send(error.details[0].message);
+                return;
+            }
+            user.id= user.id,
+            user.login= req.body.login || user.login,
+            user.password= req.body.password || user.password,
+            user.age= req.body.age || user.age,
+            user.isDeleted= user.isDeleted
+        }
+        res.send(user);
+    }
+
+
+
+})
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
