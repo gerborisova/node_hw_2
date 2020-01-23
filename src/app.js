@@ -92,7 +92,7 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 
-export function validateUser(user) {
+function validateUser(user) {
     const schema = {
         login: Joi.string().required(),
         password: Joi.string().regex(/.*?(?:[a-z].*?[0-9]|[0-9].*?[a-z]).*?/).required(),
@@ -101,12 +101,12 @@ export function validateUser(user) {
     return Joi.validate(user, schema);
 }
 
-export function getActiveUsers() {
+function getActiveUsers() {
     const activeUsers = users.filter(user => user.isDeleted === false);
     return activeUsers;
 }
 
-export function userExists(login) {
+function userExists(login) {
     const existing = getActiveUsers().filter(user => user.login === login);
     return existing.length > 0;
 }
