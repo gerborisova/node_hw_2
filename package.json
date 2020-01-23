@@ -6,14 +6,15 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint ./ --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node app.js"
+    "start": "nodemon --exec babel-node src/app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "joi": "^14.3.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "shortid": "^2.2.15"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
