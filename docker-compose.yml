@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - database
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    command: ["./wait-for-postgres.sh", "database:5432", "--", "node", "dist/app.js"]
+    restart: always
+  database:
+    image: postgres:11.2-alpine
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
