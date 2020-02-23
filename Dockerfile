@@ -1,4 +1,6 @@
 FROM nikolaik/python-nodejs
+COPY src/postgres-data/export.sql /docker-entrypoint-initdb.d/
+
 RUN apt-get update && apt-get install -y postgresql-client
 
 EXPOSE 3000 9229

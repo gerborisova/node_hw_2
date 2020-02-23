@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize';
-export default new Sequelize('postgres', 'postgres', 'postgres', {
-    host:'database',
+export default new Sequelize('myDB', 'postgres', 'Kaktus52', {
     dialect:'postgres',
     pool: { max:5,
         min:0,
