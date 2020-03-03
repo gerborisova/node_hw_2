@@ -11,9 +11,8 @@ function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : { 'default': obj };
 }
 
-const _default = new _sequelize.default('postgres', 'postgres', 'postgres', {
+const _default = new _sequelize.default('myDB', 'postgres', 'postgres', {
     dialect: 'postgres',
-    operatorsAliases: false,
     pool: {
         max: 5,
         min: 0,
