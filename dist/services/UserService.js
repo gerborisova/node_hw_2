@@ -1,13 +1,17 @@
 
 
-const _User = _interopRequireDefault(require('../models/User'));
+const _User = require('../models/User');
 
-const _joi = _interopRequireDefault(require('joi'));
+const _User2 = _interopRequireDefault(_User);
+
+const _joi = require('joi');
+
+const _joi2 = _interopRequireDefault(_joi);
 
 const _sequelize = require('sequelize');
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { 'default': obj };
+    return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _defineProperty(obj, key, value) {
@@ -20,23 +24,22 @@ function _defineProperty(obj, key, value) {
 
 function validateUser(user) {
     const schema = {
-        login: _joi.default.string().required(),
-        password: _joi.default.string().regex(/.*?(?:[a-z].*?[0-9]|[0-9].*?[a-z]).*?/).required(),
-        age: _joi.default.number().min(5).max(129).required()
+        login: _joi2.default.string().required(),
+        password: _joi2.default.string().regex(/.*?(?:[a-z].*?[0-9]|[0-9].*?[a-z]).*?/).required(),
+        age: _joi2.default.number().min(5).max(129).required()
     };
-    return _joi.default.validate(user, schema);
+    return _joi2.default.validate(user, schema);
 }
 
 function getAllUsers() {
-    return _User.default.findAll({
+    return _User2.default.findAll({
         where: {
             isDeleted: false
-        }
-    });
+        } });
 }
 
 function checkExisting(name) {
-    return _User.default.findAll({
+    return _User2.default.findAll({
         where: {
             login: name,
             isDeleted: false
@@ -45,17 +48,11 @@ function checkExisting(name) {
 }
 
 function createUser(uid, login, password, age, isDeleted) {
-    return _User.default.create({
-        uid,
-        login,
-        password,
-        age,
-        isDeleted
-    });
+    return _User2.default.create({ uid, login, password, age, isDeleted });
 }
 
 function getUserById(id) {
-    return _User.default.findAll({
+    return _User2.default.findAll({
         where: {
             uid: id,
             isDeleted: false
@@ -64,9 +61,7 @@ function getUserById(id) {
 }
 
 function deleteUser(id) {
-    return _User.default.update({
-        isDeleted: true
-    }, {
+    return _User2.default.update({ isDeleted: true }, {
         where: {
             uid: id,
             isDeleted: false
@@ -75,9 +70,8 @@ function deleteUser(id) {
         plain: true
     });
 }
-
 function updateUser(body, id) {
-    return _User.default.update(body, {
+    return _User2.default.update(body, {
         where: {
             uid: id,
             isDeleted: false
@@ -88,16 +82,15 @@ function updateUser(body, id) {
 }
 
 function getSuggestedUsers(substring, limit) {
-    return _User.default.findAll({
+    return _User2.default.findAll({
         where: {
-            login: _defineProperty({}, _sequelize.Op.like, '%'.concat(substring, '%')),
+            login: _defineProperty({}, _sequelize.Op.like, `%${  substring  }%`),
             isDeleted: false
         },
         limit,
         returning: true
     });
 }
-
 module.exports = {
     getAllUsers,
     validateUser,

@@ -13,5 +13,6 @@ db.authenticate()
 // user routes
 app.use('/users', require('./routes/users'));
 app.use('/suggested', require('./routes/suggested'));
+app.use('/groups', require('./routes/groups'));
 
 app.listen(3000);

@@ -3,18 +3,18 @@
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
-exports.default = void 0;
 
-const _sequelize = _interopRequireDefault(require('sequelize'));
+const _sequelize = require('sequelize');
+
+const _sequelize2 = _interopRequireDefault(_sequelize);
 
 function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : { 'default': obj };
+    return obj && obj.__esModule ? obj : { default: obj };
 }
 
-const _default = new _sequelize.default('myDB', 'postgres', 'postgres', {
+exports.default = new _sequelize2.default('myDB', 'postgres', 'postgres', {
     dialect: 'postgres',
-    pool: {
-        max: 5,
+    pool: { max: 5,
         min: 0,
         acquire: 30000,
         idle: 10000
@@ -23,5 +23,3 @@ const _default = new _sequelize.default('myDB', 'postgres', 'postgres', {
         timestamps: false
     }
 });
-
-exports.default = _default;
