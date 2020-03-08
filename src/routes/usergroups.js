@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 // ADD user to group
 
 router.post('/', (req, res) => {
-    UserGroupService.createJoinEntry(req.body.userId, req.body.groupId).then((result) => {
+    UserGroupService.addUserToGroup(req.body.userId, req.body.groupId).then((result) => {
         res.json(result[0]);
     }).catch((err) => {
         res.send(err.message);
