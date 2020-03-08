@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
         }
         res.status(200);
         res.json(groups);
+        
     }).catch(err => console.log(err));
 });
 
