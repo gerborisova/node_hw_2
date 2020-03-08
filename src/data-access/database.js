@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-export default new Sequelize('myDB', 'postgres', 'postgres', {
+export default new Sequelize('mydb', 'postgres', 'postgres', {
     dialect:'postgres',
     pool: { max:5,
         min:0,

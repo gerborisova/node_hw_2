@@ -8,14 +8,14 @@ function getAllGroups() {
 function checkExisting(username) {
     return Group.findAll({
         where: {
-            name: username
+            group_name: username
         }
     });
 }
 
 
-function createGroup(uid, name) {
-    return  Group.create({ uid, name });
+function createGroup(uid, group_name) {
+    return  Group.create({ uid, group_name });
 }
 
 function getGroupById(id) {

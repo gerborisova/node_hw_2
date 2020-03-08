@@ -1,36 +1,22 @@
 import UserGroup from '../models/UserGroup';
-import User from '../models/User';
-import Group from '../models/Group';
-
+import database from '../data-access/database';
+import { QueryTypes } from 'sequelize';
 
 function getAllUserGroups() {
     return UserGroup.findAll();
 }
 
-function getUserById(userId) {
-    return User.findAll({
-        where: {
-            uid: userId,
-            isDeleted:false
-        }
-    });
-}
 
-function getGroupById(groupId) {
-    return Group.findAll({
-        where: {
-            uid: groupId        }
-    });
-}
-
-function createUserGroup(uid, username, group) {
-    return  UserGroup.create({ uid, username, group });
+function createJoinEntry(user_uid, group_uid) {
+    return database.query(`INSERT INTO usergroups (username, group_name, group_uid, user_uid) 
+    SELECT users.login, groups_tables.group_name, groups_tables.uid, users.uid FROM users, groups_tables 
+    WHERE users.uid='${user_uid}' 
+    AND groups_tables.uid='${group_uid}'
+    RETURNING *
+    `, { type: QueryTypes.INSERT });
 }
 
 module.exports = {
     getAllUserGroups,
-    getUserById,
-    createUserGroup,
-    getGroupById
-
+    createJoinEntry
 };
