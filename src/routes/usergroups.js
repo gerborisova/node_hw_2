@@ -12,7 +12,9 @@ router.get('/', (req, res) => {
         }
         res.status(200);
         res.json(usergroups);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        throw err;
+    });
 });
 
 // ADD user to group

@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
         }
         res.status(200);
         res.json(users);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        throw err;
+    });
 });
 
 
@@ -38,7 +40,9 @@ router.post('/', (req, res) => {
 
             UserService.createUser(uid, login, password, age, isDeleted)
                 .then(user => res.json(user), res.status(200))
-                .catch(err => console.log(err));
+                .catch(err => {
+                    throw err;
+                });
         }
     });
 });

@@ -11,7 +11,9 @@ router.get('/', (req, res) => {
         }
         res.status(200);
         res.json(groups);
-    }).catch(err => console.log(err));
+    }).catch(err => {
+        throw err;
+    });
 });
 
 // GET group by ID
@@ -41,7 +43,9 @@ router.post('/', (req, res) => {
 
             GroupService.createGroup(uid, name)
                 .then(user => res.json(user), res.status(200))
-                .catch(err => console.log(err));
+                .catch(err => {
+                    throw err;
+                });
         }
     });
 });
