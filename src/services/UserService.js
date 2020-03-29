@@ -17,7 +17,8 @@ function getAllUsers() {
     return User.findAll({
         where : {
             isDeleted: false
-        } });
+        }
+    });
 }
 
 function checkExisting(name) {

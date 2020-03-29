@@ -1,7 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../data-access/database';
 
-
 const User = db.define('users', {
     uid: {
         type: DataTypes.UUID,
