@@ -1,9 +1,7 @@
 import express from 'express';
 import UserService from '../services/UserService';
 
-
 const router = express.Router();
-
 
 // GET users which are not deleted
 router.get('/', (req, res) => {
@@ -17,7 +15,6 @@ router.get('/', (req, res) => {
         throw err;
     });
 });
-
 
 // POST user
 router.post('/', (req, res) => {
@@ -47,7 +44,6 @@ router.post('/', (req, res) => {
     });
 });
 
-
 // GET particular user if not deleted
 router.get('/:uid', (req, res) =>  {
     UserService.getUserById(req.params.uid).then((result) => {
@@ -59,7 +55,6 @@ router.get('/:uid', (req, res) =>  {
         }
     }).catch((err) => res.send(err.message));
 });
-
 
 // DELETE user
 router.delete('/:uid', (req, res) =>  {
@@ -75,7 +70,6 @@ router.delete('/:uid', (req, res) =>  {
         }
     }).catch((err) => res.send(err.message));
 });
-
 
 // Edit user
 router.put('/:uid', (req, res) => {

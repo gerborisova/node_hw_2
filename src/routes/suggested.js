@@ -1,11 +1,9 @@
 import express from 'express';
 import UserService from '../services/UserService';
 
-
 const router = express.Router();
 
 //  GET suggested users
-
 router.get('/', (req, res) => {
     const substring = req.query.loginSubstring || '';
     const limit = req.query.limit || 5;

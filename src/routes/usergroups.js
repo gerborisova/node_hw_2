@@ -1,7 +1,6 @@
 import express from 'express';
 import UserGroupService from '../services/UserGroupService';
 
-
 const router = express.Router();
 
 // GET all groups

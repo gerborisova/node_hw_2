@@ -1,6 +1,5 @@
 import express from 'express';
 import GroupService from '../services/GroupService';
-
 const router = express.Router();
 
 // GET all groups
