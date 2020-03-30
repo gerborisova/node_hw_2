@@ -1,4 +1,3 @@
-
 import UserService from './UserService';
 import User from '../models/User';
 import { Op } from 'sequelize';
